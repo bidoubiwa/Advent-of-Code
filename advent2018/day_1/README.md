@@ -1,8 +1,8 @@
-Advent Of Code: Day 1
+# Advent Of Code: Day 1
 
 To run the code: 
 
 ```bash
-cat inputfile | cargo run
+cat input_file | cargo run --bin part_2
 ```
 
