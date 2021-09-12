@@ -7,11 +7,11 @@ fn main() {
     let mut frequencies = HashSet::new();
     let mut frequency: i32 = 0;
     io::stdin().read_to_string(&mut input).unwrap();
+    
     'frequencyCalculation: loop {
         for line in input.lines() {
             frequency += line.parse::<i32>().unwrap();
-            let has_frequency = frequencies.insert(frequency);
-            if has_frequency == false {
+            if frequencies.insert(frequency) == false {
                 println!("Frequency already achieved: {}", frequency);
                 break 'frequencyCalculation;
             }
