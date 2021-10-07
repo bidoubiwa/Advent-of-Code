@@ -31,7 +31,7 @@ fn find_fabric_outcast(points_map: PointsMap) -> usize {
       }
     })
   });
-  claims_overlaps.into_iter().find(|(usize, fabric_overlaps)| fabric_overlaps <= &1).unwrap().0
+  claims_overlaps.into_iter().find(|(_, fabric_overlaps)| fabric_overlaps <= &1).unwrap().0
 }
 
 fn main() {
