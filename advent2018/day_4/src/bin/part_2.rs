@@ -58,8 +58,6 @@ fn main() {
             .zip(guard_log.sleeping_schedule)
             .for_each(|(total_minutes, current_minutes)| *total_minutes += current_minutes);
     });
-    dbg!(&guard_logs.len());
-    dbg!(&guards);
 
     let mut max_nbr_sleep_in_min = 0;
     let mut max_minutes = 0;
@@ -78,7 +76,10 @@ fn main() {
         }
     }
 
-    dbg!(max_minutes);
-    dbg!(biggest_sleeper);
-    dbg!(max_nbr_sleep_in_min);
+    println!(
+        "The guard number {} slept the most at the same minute that is 00:{:02}. The multiplication of both is {}",
+        biggest_sleeper,
+        max_minutes,
+        max_minutes * biggest_sleeper,
+    );
 }

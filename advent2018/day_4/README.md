@@ -1,4 +1,17 @@
 ## --- Day 4: Repose Record ---
+
+run part 1:
+
+```
+cat input_file | cargo run --bin part_1 
+```
+
+run part 2:
+
+```
+cat input_file | cargo run --bin part_2 
+```
+
 You've  *sneaked*  into another supply closet - this time, it's across from the prototype suit manufacturing lab. You need to sneak inside and fix the issues with the suit, but there's a guard stationed outside the lab, so this is as close as you can safely get.
 
 As you search the closet for anything that might help, you discover that you're not the first person to want to sneak in.  Covering the walls, someone has spent an hour starting every midnight for the past few months secretly observing this guard post!  They've been writing down the ID of  **the one guard on duty that night**  - the Elves seem to have decided that one guard was enough for the overnight shift - as well as when they fall asleep or wake up while at their post (your puzzle input).
@@ -51,4 +64,11 @@ In the example above, Guard #10 spent the most minutes asleep, a total of 50 min
 While this example listed the entries in chronological order, your entries are in the order you found them. You'll need to organize them before they can be analyzed.
 
  **What is the ID of the guard you chose multiplied by the minute you chose?**  (In the above example, the answer would be `10 * 24 = 240`.)
+
+--- Part Two ---
+Strategy 2: Of all guards, which guard is most frequently asleep on the same minute?
+
+In the example above, Guard #99 spent minute 45 asleep more than any other guard or minute - three times in total. (In all other cases, any guard spent any minute asleep at most twice.)
+
+What is the ID of the guard you chose multiplied by the minute you chose? (In the above example, the answer would be 99 * 45 = 4455.)
 
