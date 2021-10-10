@@ -55,22 +55,6 @@ fn get_infinite_sectors(grid: &Grid) -> HashSet<String> {
     return infinite_sectors;
 }
 
-fn grid_width(sectors: &Vec<Sector>) -> usize {
-    sectors
-        .iter()
-        .map(|sector| sector.position.y)
-        .max()
-        .unwrap()
-}
-
-fn grid_height(sectors: &Vec<Sector>) -> usize {
-    sectors
-        .iter()
-        .map(|sector| sector.position.x)
-        .max()
-        .unwrap()
-}
-
 fn furthest_in_direction(sectors: &Vec<Sector>, accessor: impl Fn(&Sector) -> usize) -> usize {
     sectors.iter().map(accessor).max().unwrap()
 }

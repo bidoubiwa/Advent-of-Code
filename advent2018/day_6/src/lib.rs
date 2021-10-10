@@ -7,6 +7,20 @@ pub struct Point {
     pub x: usize,
     pub y: usize,
 }
+
+impl FromStr for Point {
+    type Err = Box<dyn Error>;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let coords: Vec<&str> = s.split(", ").collect();
+
+        let x = coords[0].parse()?;
+        let y = coords[1].parse()?;
+
+        Ok(Point { x, y })
+    }
+}
+
 impl Point {
     pub fn new(x: usize, y: usize) -> Point {
         Point { x, y }
