@@ -23,5 +23,4 @@ fn main() {
     let fabric_map = collect_points(claims);
     let overlaps = overlapped_fabric_count(fabric_map);
     dbg!(overlaps);
-    // dbg!(fabric_map);
 }
