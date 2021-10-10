@@ -18,3 +18,11 @@ where
     let lines: Vec<String> = read_lines();
     lines.iter().map(|line| line.parse().unwrap()).collect()
 }
+
+pub fn sub_usize(a: usize, b: usize) -> usize {
+    let a = a as isize;
+    let b = b as isize;
+
+    let abs_sub = (a - b).abs() as usize;
+    abs_sub
+}
