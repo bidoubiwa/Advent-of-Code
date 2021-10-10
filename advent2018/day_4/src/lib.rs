@@ -1,7 +1,14 @@
 use chrono::prelude::*;
+use std::cmp::Ordering;
 use std::str::FromStr;
 
 #[derive(Debug)]
+pub struct Guard {
+    pub id: usize,
+    pub sleeping_schedule: [u32; 60],
+}
+
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 pub enum GuardState {
     Sleeping,
     Awake,
@@ -23,10 +30,22 @@ impl FromStr for GuardState {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub struct Report {
     pub date_time: DateTime<Utc>,
     pub guard_state: GuardState,
+}
+
+impl Ord for Report {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.date_time.cmp(&other.date_time)
+    }
+}
+
+impl PartialOrd for Report {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
 }
 
 impl FromStr for Report {
