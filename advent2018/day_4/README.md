@@ -3,13 +3,13 @@
 run part 1:
 
 ```
-cat input_file | cargo run --bin part_1 
+cat input_file | cargo run --bin part_1 --release
 ```
 
 run part 2:
 
 ```
-cat input_file | cargo run --bin part_2 
+cat input_file | cargo run --bin part_2 --release
 ```
 
 You've  *sneaked*  into another supply closet - this time, it's across from the prototype suit manufacturing lab. You need to sneak inside and fix the issues with the suit, but there's a guard stationed outside the lab, so this is as close as you can safely get.
