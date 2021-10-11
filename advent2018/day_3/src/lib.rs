@@ -12,7 +12,10 @@ pub struct Claim {
 impl Claim {
     pub fn points_coverage(&self) -> Vec<Point> {
         (0..self.dimension.width)
-            .map(|x| (0..self.dimension.height).map(move |y| Point::new(x + self.start.x, y + self.start.y)))
+            .map(|x| {
+                (0..self.dimension.height)
+                    .map(move |y| Point::new(x + self.start.x, y + self.start.y))
+            })
             .flatten()
             .collect()
     }
