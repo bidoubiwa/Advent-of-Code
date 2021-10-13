@@ -1,10 +1,12 @@
 use std::io;
 use std::io::Read;
 
-fn box_ids_diff(current_box: &str, comparing_box: &str) -> Option<String>{
+fn box_ids_diff(current_box: &str, comparing_box: &str) -> Option<String> {
     let mut nbr_diffs = 0;
     let mut diff_index = 0;
-    for (index, (current_char, comparing_char)) in current_box.chars().zip(comparing_box.chars()).enumerate() {
+    for (index, (current_char, comparing_char)) in
+        current_box.chars().zip(comparing_box.chars()).enumerate()
+    {
         if current_char != comparing_char {
             nbr_diffs += 1;
             diff_index = index;
@@ -23,7 +25,7 @@ fn scan_box_ids(box_ids: String) -> String {
         for comparing_box in box_ids.lines().skip(global_index + 1) {
             match box_ids_diff(current_box, comparing_box) {
                 Some(similarities) => return similarities,
-                None => ()
+                None => (),
             };
         }
     }
@@ -36,4 +38,3 @@ fn main() {
     let correct_box_id: String = scan_box_ids(input);
     dbg!(correct_box_id);
 }
-
