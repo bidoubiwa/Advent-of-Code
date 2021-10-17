@@ -1,47 +1,36 @@
-use day_7::*;
 use std::collections::HashMap;
+
+use day_7::*;
 use utils::*;
 
-fn sort_block(block: &mut Vec<&Step>) {
-    block.sort_by_key(|step| step.name);
-}
+pub fn process_step<'a>(
+    starting_block: &mut Vec<&'a Step>,
+    processed: &mut Vec<char>,
+    steps: &'a HashMap<char, Step>,
+) {
+    let step = starting_block[0];
+    processed.push(step.name);
+    let childs = &step.childs;
+    childs.iter().for_each(|child| {
+        if fulfilled_predicate(&steps[child], &processed) {
+            starting_block.push(&steps[child])
+        }
+    });
 
-fn fulfilled_predicate(step: &Step, processed: &Vec<char>) -> bool {
-    let parents = &step.parents;
-    let unfinished: Vec<_> = parents
-        .iter()
-        .filter(|step| !processed.contains(step))
-        .collect();
-    unfinished.is_empty()
+    starting_block.remove(0);
+    sort_block(starting_block);
 }
 
 fn main() {
     let lines = read_lines();
-    let mut steps = HashMap::new();
-    ('A'..='Z').for_each(|letter| {
-        steps.insert(letter, Step::new(letter));
-    });
+    let mut steps = create_step_lists();
     populate_steps(&mut steps, lines);
-    let mut starting_block: Vec<_> = steps
-        .values()
-        .filter(|step| step.parents.is_empty())
-        .collect();
-    sort_block(&mut starting_block);
+
+    let mut starting_block = create_starting_block(&steps);
     let mut sequence = Vec::new();
-    loop {
-        if starting_block.len() == 0 {
-            break;
-        }
-        let step = starting_block[0];
-        sequence.push(step.name);
-        let childs = &step.childs;
-        childs.iter().for_each(|child| {
-            if fulfilled_predicate(&steps[child], &sequence) {
-                starting_block.push(&steps[child])
-            }
-        });
-        starting_block.remove(0);
-        sort_block(&mut starting_block);
+
+    while starting_block.len() != 0 {
+        process_step(&mut starting_block, &mut sequence, &steps);
     }
     println!(
         "The complete sequence order is: {}",
