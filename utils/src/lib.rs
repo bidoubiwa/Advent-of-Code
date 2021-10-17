@@ -3,6 +3,12 @@ use std::io;
 use std::io::Read;
 use std::str::FromStr;
 
+pub fn read() -> String {
+    let mut input = String::new();
+    io::stdin().read_to_string(&mut input).unwrap();
+    return input;
+}
+
 pub fn read_lines() -> Vec<String> {
     let mut input = String::new();
     io::stdin().read_to_string(&mut input).unwrap();
