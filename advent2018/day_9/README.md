@@ -52,3 +52,13 @@ Here are a few more examples:
 
  **What is the winning Elf's score?** 
 
+
+## --- Part Two ---
+
+⚠️ EXTREMELY UNEFICIENT SOLUTION ⚠️
+
+Once the methods on [linked list](https://doc.rust-lang.org/stable/std/collections/struct.LinkedList.html#method.cursor_back) in rust will not be nightly anymore, re-implementation of this solution will be done. 
+
+Amused by the speed of your answer, the Elves are curious:
+
+What would the new winning Elf's score be if the number of the last marble were 100 times larger?
